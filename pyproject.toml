@@ -1,0 +1,13 @@
+[project]
+name = "gridguard-ai-mlops"
+version = "0.1.0"
+description = "Industry-grade MLOps project for smart energy forecasting and anomaly detection."
+authors = [{name = "Your Name"}]
+requires-python = ">=3.10"
+
+[tool.black]
+line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

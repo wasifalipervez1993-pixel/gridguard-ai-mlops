@@ -1,0 +1,46 @@
+# Git / Python
+.git/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Secrets and local configs
+.env
+.env.*
+!.env.example
+
+# Data and local runtime files
+data/raw/
+data/external/
+data/processed/
+logs/
+*.log
+*.jsonl
+*.zip
+
+# Old snapshots / backups
+artifacts_champion_final/
+artifacts_registry_router_final/
+artifacts_backup_before_accuracy_tuning/
+reports_champion_final/
+reports_registry_router_final/
+reports_backup_before_accuracy_tuning/
+
+# Stale duplicate dashboard / accidental files
+src/dashboard/
+tests/pytest.ini
+scripts/Remove-Item*/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

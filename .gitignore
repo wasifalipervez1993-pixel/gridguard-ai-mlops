@@ -1,0 +1,51 @@
+# Python / virtual environment
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Data files
+data/raw/
+data/external/
+data/processed/*.parquet
+data/processed/specialists/*.parquet
+*.zip
+
+# Runtime logs
+logs/
+*.log
+*.jsonl
+
+# Old project-state backups / local snapshots
+artifacts_champion_final/
+artifacts_registry_router_final/
+artifacts_backup_before_accuracy_tuning/
+reports_champion_final/
+reports_registry_router_final/
+reports_backup_before_accuracy_tuning/
+
+# Stale / accidental duplicate files
+src/dashboard/
+tests/pytest.ini
+scripts/Remove-Item*/
+scripts/fetch_external_data.py
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
