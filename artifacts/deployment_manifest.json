@@ -1,0 +1,10 @@
+{
+  "point_model": "model.joblib",
+  "lower_quantile_model": "model_p10.joblib",
+  "upper_quantile_model": "model_p90.joblib",
+  "anomaly_model": "anomaly_model.joblib",
+  "forecast_type": "point_forecast_with_p10_p90_prediction_interval",
+  "recommended_dashboard_label": "Expected range: P10-P90",
+  "production_training_mode": "single_best_candidate",
+  "selected_model": "lgbm_l2_balanced"
+}

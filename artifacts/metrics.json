@@ -1,0 +1,11 @@
+{
+  "mae_mw": 67.97845824558763,
+  "rmse_mw": 194.79483742844246,
+  "wmape_percent": 1.1882188116297703,
+  "smape_percent": 1.758417541189175,
+  "r2": 0.9996844696122635,
+  "micro_wmape_percent": 1.1882188116297703,
+  "macro_market_wmape_percent": 1.192708315091231,
+  "macro_series_wmape_percent": 1.5875580916652356,
+  "worst_series_wmape_percent": 3.3783980652400403
+}

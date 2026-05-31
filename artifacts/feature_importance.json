@@ -1,0 +1,332 @@
+[
+  {
+    "feature": "load_mw",
+    "gain_importance": 3121335293255168.0,
+    "gain_share_percent": 63.975823257920936,
+    "split_importance": 21218
+  },
+  {
+    "feature": "zone",
+    "gain_importance": 905057673688681.0,
+    "gain_share_percent": 18.55033321644458,
+    "split_importance": 4722
+  },
+  {
+    "feature": "rolling_mean_3h",
+    "gain_importance": 251811164985154.0,
+    "gain_share_percent": 5.161197074941865,
+    "split_importance": 3658
+  },
+  {
+    "feature": "series_id",
+    "gain_importance": 220481681776517.0,
+    "gain_share_percent": 4.519058601433787,
+    "split_importance": 914
+  },
+  {
+    "feature": "rolling_max_3h",
+    "gain_importance": 191707076925985.0,
+    "gain_share_percent": 3.929285680142034,
+    "split_importance": 6171
+  },
+  {
+    "feature": "rolling_min_3h",
+    "gain_importance": 82419343901164.0,
+    "gain_share_percent": 1.6892915637255181,
+    "split_importance": 5750
+  },
+  {
+    "feature": "lag_168h",
+    "gain_importance": 29256672501503.0,
+    "gain_share_percent": 0.5996535242835315,
+    "split_importance": 6110
+  },
+  {
+    "feature": "rolling_min_6h",
+    "gain_importance": 18384315472220.0,
+    "gain_share_percent": 0.3768104374785147,
+    "split_importance": 4407
+  },
+  {
+    "feature": "rolling_max_24h",
+    "gain_importance": 15253818440094.0,
+    "gain_share_percent": 0.31264683247603015,
+    "split_importance": 3682
+  },
+  {
+    "feature": "rolling_mean_24h",
+    "gain_importance": 10708453410780.0,
+    "gain_share_percent": 0.219483669138052,
+    "split_importance": 3491
+  },
+  {
+    "feature": "rolling_min_24h",
+    "gain_importance": 9702373095950.0,
+    "gain_share_percent": 0.19886274560448539,
+    "split_importance": 4416
+  },
+  {
+    "feature": "load_change_1h",
+    "gain_importance": 6236417111963.0,
+    "gain_share_percent": 0.1278234734281083,
+    "split_importance": 26665
+  },
+  {
+    "feature": "lag_24h",
+    "gain_importance": 5779833377986.0,
+    "gain_share_percent": 0.11846519643349189,
+    "split_importance": 4856
+  },
+  {
+    "feature": "rolling_max_12h",
+    "gain_importance": 3126694212804.0,
+    "gain_share_percent": 0.06408566127841503,
+    "split_importance": 4375
+  },
+  {
+    "feature": "rolling_std_12h",
+    "gain_importance": 1361497635497.0,
+    "gain_share_percent": 0.02790566341362055,
+    "split_importance": 10445
+  },
+  {
+    "feature": "hour_sin",
+    "gain_importance": 1316689497556.0,
+    "gain_share_percent": 0.02698726239479236,
+    "split_importance": 8059
+  },
+  {
+    "feature": "hour",
+    "gain_importance": 1108426164001.0,
+    "gain_share_percent": 0.02271863471887068,
+    "split_importance": 13722
+  },
+  {
+    "feature": "hour_cos",
+    "gain_importance": 940179012457.0,
+    "gain_share_percent": 0.01927019069746524,
+    "split_importance": 8444
+  },
+  {
+    "feature": "load_ratio_to_168h_mean",
+    "gain_importance": 619959286764.0,
+    "gain_share_percent": 0.012706871268468369,
+    "split_importance": 21863
+  },
+  {
+    "feature": "rolling_mean_168h",
+    "gain_importance": 405790072013.0,
+    "gain_share_percent": 0.008317194882273872,
+    "split_importance": 4713
+  },
+  {
+    "feature": "rolling_max_6h",
+    "gain_importance": 224826389167.0,
+    "gain_share_percent": 0.004608109025693415,
+    "split_importance": 3786
+  },
+  {
+    "feature": "rolling_max_168h",
+    "gain_importance": 183900745444.0,
+    "gain_share_percent": 0.003769284771472147,
+    "split_importance": 4406
+  },
+  {
+    "feature": "rolling_min_168h",
+    "gain_importance": 181796119915.0,
+    "gain_share_percent": 0.0037261477361275734,
+    "split_importance": 6121
+  },
+  {
+    "feature": "load_change_24h",
+    "gain_importance": 140888564390.20312,
+    "gain_share_percent": 0.0028876942230355264,
+    "split_importance": 14719
+  },
+  {
+    "feature": "rolling_max_48h",
+    "gain_importance": 109144590557.0,
+    "gain_share_percent": 0.00223706022551354,
+    "split_importance": 3215
+  },
+  {
+    "feature": "rolling_min_12h",
+    "gain_importance": 105906732251.0,
+    "gain_share_percent": 0.002170696111678521,
+    "split_importance": 4811
+  },
+  {
+    "feature": "load_ratio_to_24h_mean",
+    "gain_importance": 104153558902.0,
+    "gain_share_percent": 0.002134762545503017,
+    "split_importance": 19860
+  },
+  {
+    "feature": "lag_6h",
+    "gain_importance": 88484373801.0,
+    "gain_share_percent": 0.0018136022335098147,
+    "split_importance": 4359
+  },
+  {
+    "feature": "rolling_std_3h",
+    "gain_importance": 88463230467.0,
+    "gain_share_percent": 0.0018131688734020462,
+    "split_importance": 16957
+  },
+  {
+    "feature": "day_of_week",
+    "gain_importance": 72089915099.0,
+    "gain_share_percent": 0.0014775764965135772,
+    "split_importance": 5297
+  },
+  {
+    "feature": "load_change_168h",
+    "gain_importance": 67776167795.0,
+    "gain_share_percent": 0.0013891606394615048,
+    "split_importance": 13140
+  },
+  {
+    "feature": "day_of_year",
+    "gain_importance": 65663961800.0,
+    "gain_share_percent": 0.001345868232614845,
+    "split_importance": 20310
+  },
+  {
+    "feature": "rolling_std_6h",
+    "gain_importance": 65387462925.0,
+    "gain_share_percent": 0.0013402010288395124,
+    "split_importance": 13432
+  },
+  {
+    "feature": "month_cos",
+    "gain_importance": 47318932297.0,
+    "gain_share_percent": 0.0009698630121307255,
+    "split_importance": 5323
+  },
+  {
+    "feature": "rolling_mean_12h",
+    "gain_importance": 38637935914.0,
+    "gain_share_percent": 0.0007919347096181582,
+    "split_importance": 2503
+  },
+  {
+    "feature": "lag_12h",
+    "gain_importance": 34549283434.703125,
+    "gain_share_percent": 0.0007081324635269453,
+    "split_importance": 6526
+  },
+  {
+    "feature": "rolling_std_48h",
+    "gain_importance": 30206816954.0,
+    "gain_share_percent": 0.0006191279696254957,
+    "split_importance": 5570
+  },
+  {
+    "feature": "rolling_mean_48h",
+    "gain_importance": 28647786064.0,
+    "gain_share_percent": 0.0005871736054507126,
+    "split_importance": 2629
+  },
+  {
+    "feature": "rolling_std_24h",
+    "gain_importance": 28471586728.0,
+    "gain_share_percent": 0.0005835621710743873,
+    "split_importance": 6482
+  },
+  {
+    "feature": "country",
+    "gain_importance": 27293096620.0,
+    "gain_share_percent": 0.0005594074847696076,
+    "split_importance": 2869
+  },
+  {
+    "feature": "lag_1h",
+    "gain_importance": 21665022726.0,
+    "gain_share_percent": 0.00044405279618388896,
+    "split_importance": 4574
+  },
+  {
+    "feature": "rolling_std_168h",
+    "gain_importance": 21326399208.0,
+    "gain_share_percent": 0.00043711226711437307,
+    "split_importance": 6651
+  },
+  {
+    "feature": "week_of_year",
+    "gain_importance": 17829156629.0,
+    "gain_share_percent": 0.00036543173551379407,
+    "split_importance": 5240
+  },
+  {
+    "feature": "lag_72h",
+    "gain_importance": 17806167463.0,
+    "gain_share_percent": 0.0003649605426803804,
+    "split_importance": 5215
+  },
+  {
+    "feature": "lag_2h",
+    "gain_importance": 14849314205.0,
+    "gain_share_percent": 0.0003043559924924582,
+    "split_importance": 3738
+  },
+  {
+    "feature": "lag_3h",
+    "gain_importance": 13732877997.0,
+    "gain_share_percent": 0.00028147318151214084,
+    "split_importance": 3024
+  },
+  {
+    "feature": "rolling_min_48h",
+    "gain_importance": 13033920719.0,
+    "gain_share_percent": 0.00026714714374913854,
+    "split_importance": 3542
+  },
+  {
+    "feature": "is_weekend",
+    "gain_importance": 11906446946.0,
+    "gain_share_percent": 0.00024403810352995544,
+    "split_importance": 210
+  },
+  {
+    "feature": "month_sin",
+    "gain_importance": 11798576091.0,
+    "gain_share_percent": 0.0002418271501700029,
+    "split_importance": 2893
+  },
+  {
+    "feature": "lag_48h",
+    "gain_importance": 10849083059.0,
+    "gain_share_percent": 0.00022236605653769715,
+    "split_importance": 3989
+  },
+  {
+    "feature": "rolling_mean_6h",
+    "gain_importance": 9162303196.0,
+    "gain_share_percent": 0.00018779331114136133,
+    "split_importance": 2347
+  },
+  {
+    "feature": "day_of_week_sin",
+    "gain_importance": 8204875852.0,
+    "gain_share_percent": 0.00016816959347334812,
+    "split_importance": 2931
+  },
+  {
+    "feature": "day_of_week_cos",
+    "gain_importance": 5964713869.0,
+    "gain_share_percent": 0.00012225456236367822,
+    "split_importance": 2087
+  },
+  {
+    "feature": "month",
+    "gain_importance": 3738289646.0,
+    "gain_share_percent": 7.662110449851649e-05,
+    "split_importance": 1442
+  },
+  {
+    "feature": "market",
+    "gain_importance": 639666423.0,
+    "gain_share_percent": 1.3110794636611003e-05,
+    "split_importance": 58
+  }
+]

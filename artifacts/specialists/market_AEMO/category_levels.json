@@ -1,0 +1,22 @@
+{
+  "country": [
+    "Australia"
+  ],
+  "market": [
+    "AEMO"
+  ],
+  "zone": [
+    "NSW1",
+    "QLD1",
+    "SA1",
+    "TAS1",
+    "VIC1"
+  ],
+  "series_id": [
+    "Australia/AEMO/NSW1",
+    "Australia/AEMO/QLD1",
+    "Australia/AEMO/SA1",
+    "Australia/AEMO/TAS1",
+    "Australia/AEMO/VIC1"
+  ]
+}

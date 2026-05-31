@@ -1,0 +1,34 @@
+{
+  "country": [
+    "USA"
+  ],
+  "market": [
+    "NYISO"
+  ],
+  "zone": [
+    "CAPITL",
+    "CENTRL",
+    "DUNWOD",
+    "GENESE",
+    "HUD_VL",
+    "LONGIL",
+    "MHK_VL",
+    "MILLWD",
+    "N.Y.C.",
+    "NORTH",
+    "WEST"
+  ],
+  "series_id": [
+    "USA/NYISO/CAPITL",
+    "USA/NYISO/CENTRL",
+    "USA/NYISO/DUNWOD",
+    "USA/NYISO/GENESE",
+    "USA/NYISO/HUD_VL",
+    "USA/NYISO/LONGIL",
+    "USA/NYISO/MHK_VL",
+    "USA/NYISO/MILLWD",
+    "USA/NYISO/N.Y.C.",
+    "USA/NYISO/NORTH",
+    "USA/NYISO/WEST"
+  ]
+}
