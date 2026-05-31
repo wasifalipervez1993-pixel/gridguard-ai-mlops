@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridguard-dashboard
+  namespace: gridguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gridguard-dashboard
+  template:
+    metadata:
+      labels:
+        app: gridguard-dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: your-dockerhub-username/gridguard-dashboard:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8501
+          env:
+            - name: API_URL
+              value: "http://gridguard-api-service:8000"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
