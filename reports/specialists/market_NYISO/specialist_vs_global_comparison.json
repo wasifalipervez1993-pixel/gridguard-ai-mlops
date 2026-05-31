@@ -1,0 +1,75 @@
+{
+  "specialist_name": "market_NYISO",
+  "selection_scope": {
+    "market": "NYISO",
+    "series_id": null,
+    "test_rows": 94963,
+    "series_count": 11,
+    "test_start": "2025-01-01 00:00:00",
+    "test_end": "2025-12-26 17:00:00"
+  },
+  "global_model_on_region": {
+    "mae_mw": 21.73125722731644,
+    "rmse_mw": 32.86904066313506,
+    "wmape_percent": 1.3832857646479357,
+    "smape_percent": 1.8908080764570516,
+    "r2": 0.9995115043502592
+  },
+  "specialist_model_on_region": {
+    "mae_mw": 17.875587177557097,
+    "rmse_mw": 31.598576011526436,
+    "wmape_percent": 1.1378561773386828,
+    "smape_percent": 1.469409739153366,
+    "r2": 0.9995485375164551
+  },
+  "baseline_metrics_on_region": {
+    "last_hour_baseline": {
+      "mae_mw": 52.92661819995487,
+      "rmse_mw": 82.97866097718844,
+      "wmape_percent": 3.369001469225849,
+      "smape_percent": 3.6820720264530706,
+      "r2": 0.9968867106366286
+    },
+    "same_hour_yesterday_baseline": {
+      "mae_mw": 125.69582200806812,
+      "rmse_mw": 227.7778119438804,
+      "wmape_percent": 8.001066824652957,
+      "smape_percent": 8.45062788797148,
+      "r2": 0.9765410010037404
+    },
+    "same_hour_last_week_baseline": {
+      "mae_mw": 172.99454676783964,
+      "rmse_mw": 321.4851962212439,
+      "wmape_percent": 11.01182924680815,
+      "smape_percent": 11.436811699177685,
+      "r2": 0.9532686204734568
+    },
+    "rolling_24h_average_baseline": {
+      "mae_mw": 161.66888228907195,
+      "rmse_mw": 270.02128507737706,
+      "wmape_percent": 10.290903150136439,
+      "smape_percent": 10.246539901955506,
+      "r2": 0.9670327559745395
+    },
+    "rolling_168h_average_baseline": {
+      "mae_mw": 185.89345529720833,
+      "rmse_mw": 327.2890337813066,
+      "wmape_percent": 11.832898932815219,
+      "smape_percent": 11.65383843848072,
+      "r2": 0.9515660876919543
+    }
+  },
+  "best_baseline_name": "last_hour_baseline",
+  "improvement_specialist_vs_global": {
+    "wmape_relative_improvement_percent": 17.742507989426027,
+    "mae_relative_improvement_percent": 17.74250798942604
+  },
+  "improvement_specialist_vs_best_baseline": {
+    "best_baseline_name": "last_hour_baseline",
+    "wmape_reduction_percent": 66.22571442213867
+  },
+  "deployment_decision": {
+    "deploy_specialist": true,
+    "rule": "Deploy only if specialist improves WMAPE over global model by at least 5.0%."
+  }
+}

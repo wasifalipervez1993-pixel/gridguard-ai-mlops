@@ -1,0 +1,470 @@
+{
+  "metadata": {
+    "project": "GridGuard AI",
+    "dataset": "Worldwide Electricity Load Dataset / GloElecLoad",
+    "model_type": "lgbm_l2_balanced + IsolationForest",
+    "forecasting_model": "lgbm_l2_balanced",
+    "anomaly_model": "IsolationForest",
+    "target": "target_load_mw_next_hour",
+    "created_at_utc": "2026-05-30T18:16:52.779656+00:00",
+    "split_strategy": "train_before_2024_validate_2024_test_2025",
+    "train_rows": 130560,
+    "validation_rows": 43920,
+    "train_validation_rows": 174480,
+    "test_rows": 18120,
+    "feature_count": 55,
+    "feature_columns": [
+      "load_mw",
+      "country",
+      "market",
+      "zone",
+      "series_id",
+      "hour",
+      "day_of_week",
+      "month",
+      "day_of_year",
+      "week_of_year",
+      "is_weekend",
+      "hour_sin",
+      "hour_cos",
+      "day_of_week_sin",
+      "day_of_week_cos",
+      "month_sin",
+      "month_cos",
+      "lag_1h",
+      "lag_2h",
+      "lag_3h",
+      "lag_6h",
+      "lag_12h",
+      "lag_24h",
+      "lag_48h",
+      "lag_72h",
+      "lag_168h",
+      "rolling_mean_3h",
+      "rolling_std_3h",
+      "rolling_min_3h",
+      "rolling_max_3h",
+      "rolling_mean_6h",
+      "rolling_std_6h",
+      "rolling_min_6h",
+      "rolling_max_6h",
+      "rolling_mean_12h",
+      "rolling_std_12h",
+      "rolling_min_12h",
+      "rolling_max_12h",
+      "rolling_mean_24h",
+      "rolling_std_24h",
+      "rolling_min_24h",
+      "rolling_max_24h",
+      "rolling_mean_48h",
+      "rolling_std_48h",
+      "rolling_min_48h",
+      "rolling_max_48h",
+      "rolling_mean_168h",
+      "rolling_std_168h",
+      "rolling_min_168h",
+      "rolling_max_168h",
+      "load_change_1h",
+      "load_change_24h",
+      "load_change_168h",
+      "load_ratio_to_24h_mean",
+      "load_ratio_to_168h_mean"
+    ],
+    "categorical_features": [
+      "country",
+      "market",
+      "zone",
+      "series_id"
+    ],
+    "numeric_anomaly_features": [
+      "load_change_1h",
+      "load_change_24h",
+      "load_change_168h",
+      "load_ratio_to_24h_mean",
+      "load_ratio_to_168h_mean",
+      "rolling_std_3h",
+      "rolling_std_6h",
+      "rolling_std_24h",
+      "rolling_std_168h",
+      "hour_sin",
+      "hour_cos",
+      "day_of_week_sin",
+      "day_of_week_cos"
+    ],
+    "series_count": 5,
+    "data_start": "2021-01-08 00:00:00",
+    "data_end": "2025-05-31 23:00:00",
+    "test_start": "2025-01-01 00:00:00",
+    "test_end": "2025-05-31 23:00:00",
+    "best_iteration": 5848,
+    "production_training_mode": "single_best_candidate",
+    "quantile_forecasting_enabled": true,
+    "prediction_interval": "P10-P90"
+  },
+  "model_selection_results": {
+    "lgbm_l2_balanced": {
+      "mae_mw": 69.0875398791143,
+      "rmse_mw": 111.56393807404592,
+      "wmape_percent": 1.6556005211780207,
+      "smape_percent": 2.4310766312078886,
+      "r2": 0.9983641831044109,
+      "best_iteration": 5848,
+      "objective": "regression",
+      "learning_rate": 0.025,
+      "num_leaves": 64,
+      "min_child_samples": 40,
+      "subsample": 0.85,
+      "colsample_bytree": 0.85,
+      "reg_alpha": 0.05,
+      "reg_lambda": 0.5,
+      "production_candidate_only": true
+    }
+  },
+  "baseline_metrics": {
+    "last_hour_baseline": {
+      "mae_mw": 225.45056040681752,
+      "rmse_mw": 321.0206230145205,
+      "wmape_percent": 5.422869572406805,
+      "smape_percent": 6.259273459346773,
+      "r2": 0.9861686873665371
+    },
+    "same_hour_yesterday_baseline": {
+      "mae_mw": 399.0520546921568,
+      "rmse_mw": 644.1878969186445,
+      "wmape_percent": 9.598588893687552,
+      "smape_percent": 11.418054028186777,
+      "r2": 0.944304173458985
+    },
+    "same_hour_last_week_baseline": {
+      "mae_mw": 488.52986154351015,
+      "rmse_mw": 800.6378444079668,
+      "wmape_percent": 11.750841144932009,
+      "smape_percent": 13.71413259999527,
+      "r2": 0.9139660703060394
+    },
+    "rolling_24h_average_baseline": {
+      "mae_mw": 558.4655360401861,
+      "rmse_mw": 789.8831356887054,
+      "wmape_percent": 13.433037190794234,
+      "smape_percent": 15.102004533286781,
+      "r2": 0.9162618784175183
+    },
+    "rolling_168h_average_baseline": {
+      "mae_mw": 591.0280945759998,
+      "rmse_mw": 864.7867994972938,
+      "wmape_percent": 14.216279900703416,
+      "smape_percent": 15.85472577959261,
+      "r2": 0.8996272934951549
+    }
+  },
+  "model_metrics": {
+    "mae_mw": 70.89012019191439,
+    "rmse_mw": 115.97889616159901,
+    "wmape_percent": 1.7051537821831422,
+    "smape_percent": 2.137293789226744,
+    "r2": 0.9981946746793322,
+    "micro_wmape_percent": 1.7051537821831422,
+    "macro_market_wmape_percent": 1.7051537821831422,
+    "macro_series_wmape_percent": 1.905939425851938,
+    "worst_series_wmape_percent": 2.956136848711291
+  },
+  "improvement_vs_best_baseline": {
+    "best_baseline_name": "last_hour_baseline",
+    "wmape_reduction_percent": 68.55624574008789,
+    "mae_reduction_percent": 68.55624574008789,
+    "rmse_reduction_percent": 63.87182384966182
+  },
+  "anomaly_metrics": {
+    "test_anomaly_rate": 0.017770419426048564,
+    "decision_function_mean": 0.11479020039761208,
+    "decision_function_std": 0.03971720521599243,
+    "anomaly_feature_count": 13,
+    "anomaly_feature_strategy": "context_aware_load_change_and_variability_features"
+  },
+  "quantile_forecast_models": {
+    "p10": {
+      "alpha": 0.1,
+      "model_path": "D:\\System Data\\Downloads\\Compressed\\gridguard-ai-mlops\\artifacts\\specialists\\market_AEMO\\model_p10.joblib",
+      "mean_prediction": 4072.0562119784972,
+      "coverage_direction": 0.8430463576158941
+    },
+    "p90": {
+      "alpha": 0.9,
+      "model_path": "D:\\System Data\\Downloads\\Compressed\\gridguard-ai-mlops\\artifacts\\specialists\\market_AEMO\\model_p90.joblib",
+      "mean_prediction": 4244.9266974253,
+      "coverage_direction": 0.8314017660044151
+    }
+  },
+  "top_25_feature_importance": [
+    {
+      "feature": "load_mw",
+      "gain_importance": 19014927153553.664,
+      "gain_share_percent": 85.85106470061316,
+      "split_importance": 9369
+    },
+    {
+      "feature": "rolling_max_3h",
+      "gain_importance": 2011338709995.5527,
+      "gain_share_percent": 9.081053444604176,
+      "split_importance": 3973
+    },
+    {
+      "feature": "lag_24h",
+      "gain_importance": 287796686849.10156,
+      "gain_share_percent": 1.2993818900161687,
+      "split_importance": 8250
+    },
+    {
+      "feature": "rolling_mean_3h",
+      "gain_importance": 278530094127.68896,
+      "gain_share_percent": 1.2575438727124026,
+      "split_importance": 3362
+    },
+    {
+      "feature": "load_change_1h",
+      "gain_importance": 186065792800.10303,
+      "gain_share_percent": 0.8400740264349205,
+      "split_importance": 22974
+    },
+    {
+      "feature": "rolling_mean_24h",
+      "gain_importance": 54934162531.50098,
+      "gain_share_percent": 0.24802389741916503,
+      "split_importance": 5268
+    },
+    {
+      "feature": "rolling_max_12h",
+      "gain_importance": 47937181329.33789,
+      "gain_share_percent": 0.21643301720989674,
+      "split_importance": 5906
+    },
+    {
+      "feature": "rolling_max_6h",
+      "gain_importance": 36488836832.69287,
+      "gain_share_percent": 0.1647445434040585,
+      "split_importance": 4765
+    },
+    {
+      "feature": "zone",
+      "gain_importance": 32281053210.770996,
+      "gain_share_percent": 0.1457466949740011,
+      "split_importance": 1516
+    },
+    {
+      "feature": "rolling_min_3h",
+      "gain_importance": 32176515863.75293,
+      "gain_share_percent": 0.1452747161717683,
+      "split_importance": 4273
+    },
+    {
+      "feature": "hour",
+      "gain_importance": 23433248570.455566,
+      "gain_share_percent": 0.10579947653345367,
+      "split_importance": 9128
+    },
+    {
+      "feature": "rolling_max_24h",
+      "gain_importance": 22042267901.98242,
+      "gain_share_percent": 0.09951929620975085,
+      "split_importance": 5371
+    },
+    {
+      "feature": "lag_1h",
+      "gain_importance": 12155593807.97998,
+      "gain_share_percent": 0.05488165492594228,
+      "split_importance": 5859
+    },
+    {
+      "feature": "hour_cos",
+      "gain_importance": 10014303167.814453,
+      "gain_share_percent": 0.04521387761566676,
+      "split_importance": 5691
+    },
+    {
+      "feature": "hour_sin",
+      "gain_importance": 9741232567.49414,
+      "gain_share_percent": 0.0439809829752288,
+      "split_importance": 4775
+    },
+    {
+      "feature": "load_change_24h",
+      "gain_importance": 9369980091.671387,
+      "gain_share_percent": 0.042304804041450164,
+      "split_importance": 13659
+    },
+    {
+      "feature": "series_id",
+      "gain_importance": 8137889326.449219,
+      "gain_share_percent": 0.03674200050568442,
+      "split_importance": 266
+    },
+    {
+      "feature": "rolling_min_6h",
+      "gain_importance": 7531941444.537109,
+      "gain_share_percent": 0.03400618824644503,
+      "split_importance": 4837
+    },
+    {
+      "feature": "lag_6h",
+      "gain_importance": 6811336114.129395,
+      "gain_share_percent": 0.03075270563539661,
+      "split_importance": 9608
+    },
+    {
+      "feature": "lag_2h",
+      "gain_importance": 5549469540.432129,
+      "gain_share_percent": 0.025055466409224816,
+      "split_importance": 5199
+    },
+    {
+      "feature": "rolling_mean_168h",
+      "gain_importance": 5517618266.839844,
+      "gain_share_percent": 0.02491166013913573,
+      "split_importance": 5968
+    },
+    {
+      "feature": "lag_168h",
+      "gain_importance": 4795427339.432129,
+      "gain_share_percent": 0.02165101866865351,
+      "split_importance": 9304
+    },
+    {
+      "feature": "lag_12h",
+      "gain_importance": 3954492030.580078,
+      "gain_share_percent": 0.017854254630259858,
+      "split_importance": 10379
+    },
+    {
+      "feature": "load_ratio_to_168h_mean",
+      "gain_importance": 3043735836.192383,
+      "gain_share_percent": 0.013742254182430132,
+      "split_importance": 10805
+    },
+    {
+      "feature": "load_ratio_to_24h_mean",
+      "gain_importance": 2697895005.074707,
+      "gain_share_percent": 0.012180807045208335,
+      "split_importance": 11527
+    }
+  ],
+  "worst_10_series_by_wmape": [
+    {
+      "series_id": "Australia/AEMO/SA1",
+      "country": "Australia",
+      "market": "AEMO",
+      "zone": "SA1",
+      "rows": 3624,
+      "mae_mw": 39.131051176106155,
+      "rmse_mw": 59.493169849714654,
+      "wmape_percent": 2.956136848711291,
+      "smape_percent": 3.942908007306825,
+      "r2": 0.9824215315807708
+    },
+    {
+      "series_id": "Australia/AEMO/VIC1",
+      "country": "Australia",
+      "market": "AEMO",
+      "zone": "VIC1",
+      "rows": 3624,
+      "mae_mw": 100.70901596429478,
+      "rmse_mw": 150.2989996034592,
+      "wmape_percent": 2.1511509751714963,
+      "smape_percent": 2.245174777203181,
+      "r2": 0.9809782895512056
+    },
+    {
+      "series_id": "Australia/AEMO/TAS1",
+      "country": "Australia",
+      "market": "AEMO",
+      "zone": "TAS1",
+      "rows": 3624,
+      "mae_mw": 16.105892122641688,
+      "rmse_mw": 21.56421717296618,
+      "wmape_percent": 1.5481952314855416,
+      "smape_percent": 1.5490700760455713,
+      "r2": 0.9662230144498611
+    },
+    {
+      "series_id": "Australia/AEMO/NSW1",
+      "country": "Australia",
+      "market": "AEMO",
+      "zone": "NSW1",
+      "rows": 3624,
+      "mae_mw": 113.50630629194254,
+      "rmse_mw": 162.3500175592085,
+      "wmape_percent": 1.5456873300179446,
+      "smape_percent": 1.577934825472191,
+      "r2": 0.9828743384384285
+    },
+    {
+      "series_id": "Australia/AEMO/QLD1",
+      "country": "Australia",
+      "market": "AEMO",
+      "zone": "QLD1",
+      "rows": 3624,
+      "mae_mw": 84.99833540458677,
+      "rmse_mw": 119.59829250448784,
+      "wmape_percent": 1.3285267438734156,
+      "smape_percent": 1.371381260105951,
+      "r2": 0.9872318678038517
+    }
+  ],
+  "per_market_metrics": [
+    {
+      "market": "AEMO",
+      "rows": 18120,
+      "mae_mw": 70.89012019191439,
+      "rmse_mw": 115.97889616159901,
+      "wmape_percent": 1.7051537821831422,
+      "smape_percent": 2.137293789226744,
+      "r2": 0.9981946746793322
+    }
+  ],
+  "per_month_metrics": [
+    {
+      "month": "2025-01",
+      "rows": 3720,
+      "mae_mw": 78.43303532897588,
+      "rmse_mw": 130.71212233383585,
+      "wmape_percent": 1.9058682153486661,
+      "smape_percent": 2.3852042560623428,
+      "r2": 0.9978185782304991
+    },
+    {
+      "month": "2025-02",
+      "rows": 3360,
+      "mae_mw": 86.93349879215053,
+      "rmse_mw": 142.9042313620191,
+      "wmape_percent": 2.0339971127801615,
+      "smape_percent": 2.523526135013014,
+      "r2": 0.9974739306502052
+    },
+    {
+      "month": "2025-03",
+      "rows": 3720,
+      "mae_mw": 73.1072071847311,
+      "rmse_mw": 115.93702646352327,
+      "wmape_percent": 1.7168536121085882,
+      "smape_percent": 2.094738157874899,
+      "r2": 0.9982865122127353
+    },
+    {
+      "month": "2025-04",
+      "rows": 3600,
+      "mae_mw": 56.6365571490414,
+      "rmse_mw": 88.37141956828894,
+      "wmape_percent": 1.4436303464838431,
+      "smape_percent": 1.931697208651168,
+      "r2": 0.9987421083976326
+    },
+    {
+      "month": "2025-05",
+      "rows": 3720,
+      "mae_mw": 60.43309517428063,
+      "rmse_mw": 94.81519175256145,
+      "wmape_percent": 1.4320745052601576,
+      "smape_percent": 1.7820483645575615,
+      "r2": 0.998755622160017
+    }
+  ]
+}

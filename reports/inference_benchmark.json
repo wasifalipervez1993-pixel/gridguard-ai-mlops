@@ -1,0 +1,5 @@
+{
+  "sample_size": 1000,
+  "total_prediction_seconds": 0.5708843000029447,
+  "average_latency_ms_per_prediction": 0.5708843000029447
+}

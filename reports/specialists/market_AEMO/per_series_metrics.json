@@ -1,0 +1,62 @@
+[
+  {
+    "series_id": "Australia/AEMO/SA1",
+    "country": "Australia",
+    "market": "AEMO",
+    "zone": "SA1",
+    "rows": 3624,
+    "mae_mw": 39.131051176106155,
+    "rmse_mw": 59.493169849714654,
+    "wmape_percent": 2.956136848711291,
+    "smape_percent": 3.942908007306825,
+    "r2": 0.9824215315807708
+  },
+  {
+    "series_id": "Australia/AEMO/VIC1",
+    "country": "Australia",
+    "market": "AEMO",
+    "zone": "VIC1",
+    "rows": 3624,
+    "mae_mw": 100.70901596429478,
+    "rmse_mw": 150.2989996034592,
+    "wmape_percent": 2.1511509751714963,
+    "smape_percent": 2.245174777203181,
+    "r2": 0.9809782895512056
+  },
+  {
+    "series_id": "Australia/AEMO/TAS1",
+    "country": "Australia",
+    "market": "AEMO",
+    "zone": "TAS1",
+    "rows": 3624,
+    "mae_mw": 16.105892122641688,
+    "rmse_mw": 21.56421717296618,
+    "wmape_percent": 1.5481952314855416,
+    "smape_percent": 1.5490700760455713,
+    "r2": 0.9662230144498611
+  },
+  {
+    "series_id": "Australia/AEMO/NSW1",
+    "country": "Australia",
+    "market": "AEMO",
+    "zone": "NSW1",
+    "rows": 3624,
+    "mae_mw": 113.50630629194254,
+    "rmse_mw": 162.3500175592085,
+    "wmape_percent": 1.5456873300179446,
+    "smape_percent": 1.577934825472191,
+    "r2": 0.9828743384384285
+  },
+  {
+    "series_id": "Australia/AEMO/QLD1",
+    "country": "Australia",
+    "market": "AEMO",
+    "zone": "QLD1",
+    "rows": 3624,
+    "mae_mw": 84.99833540458677,
+    "rmse_mw": 119.59829250448784,
+    "wmape_percent": 1.3285267438734156,
+    "smape_percent": 1.371381260105951,
+    "r2": 0.9872318678038517
+  }
+]
