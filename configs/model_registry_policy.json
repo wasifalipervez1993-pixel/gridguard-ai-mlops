@@ -1,0 +1,26 @@
+{
+  "registry_version": "1.0.0",
+  "deployment_mode": "champion_specialist",
+  "fallback_model_key": "global",
+  "global_model_dir": "artifacts",
+  "specialist_artifacts_root": "artifacts/specialists",
+  "specialist_report_glob": "reports/specialists/*/specialist_vs_global_comparison.json",
+  "registry_output_path": "artifacts/model_registry.json",
+  "min_wmape_relative_improvement_percent": 5.0,
+  "routing_priority": [
+    "series_id",
+    "market"
+  ],
+  "approved_status": "approved",
+  "rejected_status": "rejected",
+  "required_artifact_files": [
+    "model.joblib",
+    "model_p10.joblib",
+    "model_p90.joblib",
+    "anomaly_model.joblib",
+    "feature_columns.json",
+    "category_levels.json",
+    "model_metadata.json",
+    "deployment_manifest.json"
+  ]
+}
