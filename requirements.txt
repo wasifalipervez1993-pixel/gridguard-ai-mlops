@@ -1,4 +1,4 @@
-fastapi==0.115.6
+﻿fastapi==0.115.6
 uvicorn[standard]==0.34.0
 pydantic==2.10.4
 pandas==2.2.3
@@ -17,5 +17,5 @@ huggingface_hub==0.27.0
 pytest==8.3.4
 flake8==7.1.1
 black==24.10.0
-lightgbm==4.9.0
+lightgbm==4.6.0
 pymongo[srv]>=4.6.0
