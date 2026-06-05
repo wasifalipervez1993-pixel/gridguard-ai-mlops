@@ -2,18 +2,17 @@
 title: GridGuard AI
 emoji: ⚡
 colorFrom: blue
-colorTo: green
+colorTo: indigo
 sdk: docker
 app_port: 7860
+pinned: false
 ---
 
-# GridGuard AI Hugging Face Space
+# GridGuard AI
 
-This Space runs the GridGuard AI API and dashboard in one Docker container for demonstration.
+Registry-driven champion–specialist electricity-load forecasting dashboard.
 
-Required secrets:
+This Docker Space runs:
 
-- `MONGODB_URI` optional but recommended
-- `MONGODB_DB` optional, default `gridguard`
-
-Before deployment, make sure trained artifacts exist in the `artifacts/` folder or modify the Dockerfile startup to download artifacts from a Hugging Face model repository.
+- FastAPI internally on port 8000.
+- Streamlit dashboard publicly on port 7860.
