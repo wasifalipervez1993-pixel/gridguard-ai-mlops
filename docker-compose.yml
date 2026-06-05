@@ -6,50 +6,40 @@ services:
     container_name: gridguard-api
     env_file:
       - .env
+    environment:
+      MODEL_DIR: /app/artifacts
+      ENVIRONMENT: docker
     ports:
       - "8000:8000"
-    volumes:
-      - ./artifacts:/app/artifacts
-      - ./logs:/app/logs
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "--fail", "http://127.0.0.1:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
+      start_period: 45s
 
   dashboard:
     build:
       context: .
       dockerfile: Dockerfile.dashboard
     container_name: gridguard-dashboard
-    env_file:
-      - .env
     environment:
       API_URL: http://api:8000
-    depends_on:
-      - api
+      MODEL_DIR: /app/artifacts
+      ENVIRONMENT: docker
     ports:
       - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy
 
   prometheus:
-    image: prom/prometheus:v2.55.1
+    image: prom/prometheus:latest
     container_name: gridguard-prometheus
-    volumes:
-      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-    depends_on:
-      - api
     ports:
       - "9090:9090"
-
-  grafana:
-    image: grafana/grafana:11.4.0
-    container_name: gridguard-grafana
-    ports:
-      - "3000:3000"
-    environment:
-      GF_SECURITY_ADMIN_USER: admin
-      GF_SECURITY_ADMIN_PASSWORD: admin
+    volumes:
+      - ./docker/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
-      - prometheus
+      api:
+        condition: service_healthy
