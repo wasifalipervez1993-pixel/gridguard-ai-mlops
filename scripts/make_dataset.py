@@ -8,8 +8,8 @@ for path in [PROJECT_ROOT, SRC_DIR]:
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
-from gridguard.config import settings
-from gridguard.preprocessing import build_feature_dataset
+from gridguard.config import settings  # noqa: E402
+from gridguard.preprocessing import build_feature_dataset  # noqa: E402
 
 
 def main() -> None:
