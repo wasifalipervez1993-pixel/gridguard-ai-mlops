@@ -77,3 +77,48 @@ The router is not hardcoded for specific markets. It reads the active model regi
 
 ```text
 artifacts/model_registry.json
+
+<!-- GRIDGUARD_MODEL_CARD_PRODUCTION_GOVERNANCE_START -->
+## Production safeguards, maintenance, and deployment boundaries
+
+### Recommended safeguards before real deployment
+
+GridGuard AI should not be used as a mission-critical grid-control product without additional safeguards.
+
+Recommended safeguards before real deployment:
+
+- Human-in-the-loop review.
+- Drift monitoring.
+- Periodic retraining.
+- Backtesting on new regions.
+- Model registry approval workflow.
+- Production-grade logging and alerting.
+- Authentication and access control.
+- Operational SLAs.
+
+### Recommended production maintenance
+
+Recommended production maintenance:
+
+- Run CI tests on every commit.
+- Rebuild the model registry after every specialist training run.
+- Retrain models on a scheduled basis.
+- Monitor WMAPE, MAE, RMSE, latency, and routing distribution.
+- Investigate markets with high worst-series WMAPE.
+- Promote specialists only when they beat the global model by the configured threshold.
+- Review MongoDB prediction logs and Prometheus metrics regularly.
+- Validate all required artifacts before model promotion.
+
+### Current limitations
+
+Current limitations:
+
+- Anomaly detection is unsupervised.
+- The system is validated for next-hour forecasting only.
+- Real production deployment requires authentication, access control, drift monitoring, and operational SLAs.
+- Model artifacts may need Git LFS or external model storage for large deployments.
+- Weather and holiday context are not included in the current release.
+- Prediction intervals should be calibrated further before safety-critical use.
+
+For more detail, see `docs/PRODUCTION_READINESS.md`.
+<!-- GRIDGUARD_MODEL_CARD_PRODUCTION_GOVERNANCE_END -->

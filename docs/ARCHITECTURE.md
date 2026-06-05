@@ -50,3 +50,22 @@ flowchart TD
     N --> Q[Streamlit dashboard]
     P --> Q
     O --> Q
+
+<!-- GRIDGUARD_ARCHITECTURE_OPERATIONAL_GOVERNANCE_START -->
+## Operational governance
+
+GridGuard AI follows a governed champion-specialist model-serving pattern.
+
+Production safeguards should include:
+
+- Human-in-the-loop review.
+- Drift monitoring.
+- Periodic retraining.
+- Backtesting on new regions.
+- Model registry approval workflow.
+- Production-grade logging and alerting.
+
+Specialist models should only be promoted when they beat the global model by the configured threshold and pass artifact validation. After every specialist training run, the model registry should be rebuilt and reviewed before deployment.
+
+The current system is validated for next-hour forecasting only. Anomaly detection is unsupervised, and real production deployment requires authentication, access control, alerting, drift monitoring, and operational SLAs.
+<!-- GRIDGUARD_ARCHITECTURE_OPERATIONAL_GOVERNANCE_END -->

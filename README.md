@@ -75,3 +75,40 @@ flowchart TD
     K --> N[Streamlit dashboard]
     L --> N
     M --> N
+
+<!-- GRIDGUARD_README_PRODUCTION_READINESS_START -->
+## Production readiness and safeguards
+
+GridGuard AI is an enterprise-oriented MLOps forecasting platform prototype. It demonstrates production-style architecture, but real mission-critical deployment requires additional operational controls.
+
+### Recommended safeguards before real deployment
+
+- Human-in-the-loop review.
+- Drift monitoring.
+- Periodic retraining.
+- Backtesting on new regions.
+- Model registry approval workflow.
+- Production-grade logging and alerting.
+- Authentication and access control.
+- Operational SLAs.
+
+### Recommended production maintenance
+
+- Run CI tests on every commit.
+- Rebuild the model registry after every specialist training run.
+- Retrain models on a scheduled basis.
+- Monitor WMAPE, MAE, RMSE, latency, and routing distribution.
+- Investigate markets with high worst-series WMAPE.
+- Promote specialists only when they beat the global model by the configured threshold.
+
+### Current limitations
+
+- Anomaly detection is unsupervised.
+- The system is validated for next-hour forecasting only.
+- Real production deployment requires authentication, access control, drift monitoring, and operational SLAs.
+- Model artifacts may need Git LFS or external model storage for large deployments.
+
+Full production-readiness notes are available in:
+
+`docs/PRODUCTION_READINESS.md`
+<!-- GRIDGUARD_README_PRODUCTION_READINESS_END -->
