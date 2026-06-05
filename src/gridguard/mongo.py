@@ -1,70 +1,164 @@
 from __future__ import annotations
 
-import json
+import os
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
 
-from pymongo import MongoClient
-from pymongo.errors import PyMongoError
+try:
+    from bson import ObjectId
+    from pymongo import MongoClient
+    from pymongo.collection import Collection
+    from pymongo.errors import PyMongoError
+except Exception:  # pragma: no cover
+    MongoClient = None
+    Collection = Any
+    ObjectId = None
+    PyMongoError = Exception
 
-from gridguard.config import settings
+
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _json_safe(value: Any) -> Any:
+    if ObjectId is not None and isinstance(value, ObjectId):
+        return str(value)
+
+    if isinstance(value, datetime):
+        return value.isoformat()
+
+    if isinstance(value, dict):
+        return {key: _json_safe(item) for key, item in value.items()}
+
+    if isinstance(value, list):
+        return [_json_safe(item) for item in value]
+
+    return value
 
 
 class PredictionLogger:
+    """
+    MongoDB Atlas logger for prediction and feedback records.
+
+    If MONGODB_URI is missing, logging is disabled safely.
+    This allows the app to run locally, in tests, and in Docker without MongoDB.
+    """
+
     def __init__(self) -> None:
-        self.client = None
-        self.db = None
-        self.local_log_dir = Path("logs")
-        self.local_log_dir.mkdir(exist_ok=True)
+        self.mongodb_uri = os.getenv("MONGODB_URI", "").strip()
+        self.database_name = (
+            os.getenv("MONGODB_DB")
+            or os.getenv("MONGODB_DB_NAME")
+            or "gridguard"
+        ).strip()
+        self.prediction_collection_name = os.getenv(
+            "MONGODB_PREDICTION_COLLECTION",
+            "prediction_logs",
+        ).strip()
+        self.feedback_collection_name = os.getenv(
+            "MONGODB_FEEDBACK_COLLECTION",
+            "feedback_logs",
+        ).strip()
 
-        if settings.mongodb_uri:
-            try:
-                self.client = MongoClient(settings.mongodb_uri, serverSelectionTimeoutMS=3000)
-                self.client.admin.command("ping")
-                self.db = self.client[settings.mongodb_db]
-                print("Connected to MongoDB Atlas")
-            except PyMongoError as exc:
-                print(f"MongoDB connection failed; using local JSONL logs. Reason: {exc}")
-                self.client = None
-                self.db = None
+        self.enabled = bool(self.mongodb_uri)
+        self.client: Any | None = None
+        self.prediction_collection: Collection | None = None
+        self.feedback_collection: Collection | None = None
 
-    def _with_timestamp(self, record: dict[str, Any]) -> dict[str, Any]:
-        enriched = dict(record)
-        enriched["created_at_utc"] = datetime.now(timezone.utc).isoformat()
-        return enriched
+        if self.enabled:
+            self._connect()
 
-    def _write_local(self, filename: str, record: dict[str, Any]) -> None:
-        path = self.local_log_dir / filename
-        with path.open("a", encoding="utf-8") as f:
-            f.write(json.dumps(record, default=str) + "\n")
+    def _connect(self) -> None:
+        if MongoClient is None:
+            self.enabled = False
+            return
 
-    def log_prediction(self, record: dict[str, Any]) -> None:
-        record = self._with_timestamp(record)
-        if self.db is not None:
-            self.db[settings.mongodb_prediction_collection].insert_one(record)
-        else:
-            self._write_local("prediction_logs.jsonl", record)
+        try:
+            self.client = MongoClient(
+                self.mongodb_uri,
+                serverSelectionTimeoutMS=5000,
+                connectTimeoutMS=5000,
+                socketTimeoutMS=5000,
+            )
 
-    def log_feedback(self, record: dict[str, Any]) -> None:
-        record = self._with_timestamp(record)
-        if self.db is not None:
-            self.db[settings.mongodb_feedback_collection].insert_one(record)
-        else:
-            self._write_local("feedback_logs.jsonl", record)
+            # Force connection check early.
+            self.client.admin.command("ping")
 
-    def latest_predictions(self, limit: int = 50) -> list[dict[str, Any]]:
-        if self.db is None:
-            path = self.local_log_dir / "prediction_logs.jsonl"
-            if not path.exists():
-                return []
-            rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
-            return rows[-limit:][::-1]
+            database = self.client[self.database_name]
+            self.prediction_collection = database[self.prediction_collection_name]
+            self.feedback_collection = database[self.feedback_collection_name]
 
-        cursor = (
-            self.db[settings.mongodb_prediction_collection]
-            .find({}, {"_id": 0})
-            .sort("created_at_utc", -1)
-            .limit(limit)
-        )
-        return list(cursor)
+            self.prediction_collection.create_index("created_at_utc")
+            self.prediction_collection.create_index("request.series_id")
+            self.prediction_collection.create_index("request.market")
+            self.prediction_collection.create_index("response.served_by_model_key")
+
+            self.feedback_collection.create_index("created_at_utc")
+            self.feedback_collection.create_index("prediction_id")
+
+        except PyMongoError:
+            self.enabled = False
+            self.client = None
+            self.prediction_collection = None
+            self.feedback_collection = None
+
+    def status(self) -> dict[str, Any]:
+        return {
+            "enabled": self.enabled,
+            "database": self.database_name if self.enabled else None,
+            "prediction_collection": (
+                self.prediction_collection_name if self.enabled else None
+            ),
+            "feedback_collection": self.feedback_collection_name if self.enabled else None,
+        }
+
+    def log_prediction(self, record: dict[str, Any]) -> str | None:
+        if not self.enabled or self.prediction_collection is None:
+            return None
+
+        payload = {
+            **record,
+            "created_at_utc": record.get("created_at_utc", _utc_now()),
+            "logger": "mongodb_atlas",
+        }
+
+        try:
+            result = self.prediction_collection.insert_one(payload)
+            return str(result.inserted_id)
+        except PyMongoError:
+            return None
+
+    def log_feedback(self, record: dict[str, Any]) -> str | None:
+        if not self.enabled or self.feedback_collection is None:
+            return None
+
+        payload = {
+            **record,
+            "created_at_utc": record.get("created_at_utc", _utc_now()),
+            "logger": "mongodb_atlas",
+        }
+
+        try:
+            result = self.feedback_collection.insert_one(payload)
+            return str(result.inserted_id)
+        except PyMongoError:
+            return None
+
+    def latest_predictions(self, limit: int = 25) -> list[dict[str, Any]]:
+        if not self.enabled or self.prediction_collection is None:
+            return []
+
+        safe_limit = min(max(int(limit), 1), 100)
+
+        try:
+            cursor = (
+                self.prediction_collection.find({})
+                .sort("created_at_utc", -1)
+                .limit(safe_limit)
+            )
+
+            return [_json_safe(document) for document in cursor]
+
+        except PyMongoError:
+            return []
+    
