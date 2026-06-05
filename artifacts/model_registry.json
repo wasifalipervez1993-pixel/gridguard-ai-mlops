@@ -172,12 +172,12 @@
       "model_key": "market_AEMO",
       "scope": "market",
       "status": "approved",
-      "model_dir": "artifacts\\specialists\\market_AEMO",
+      "model_dir": "artifacts/specialists/market_AEMO",
       "match": {
         "market": "AEMO"
       },
       "artifact_validation": {
-        "model_dir": "artifacts\\specialists\\market_AEMO",
+        "model_dir": "artifacts/specialists/market_AEMO",
         "required_files": [
           "model.joblib",
           "model_p10.joblib",
@@ -191,7 +191,7 @@
         "missing_files": [],
         "is_valid": true
       },
-      "comparison_report": "reports\\specialists\\market_AEMO\\specialist_vs_global_comparison.json",
+      "comparison_report": "reports/specialists/market_AEMO/specialist_vs_global_comparison.json",
       "selection_scope": {
         "market": "AEMO",
         "series_id": null,
@@ -353,12 +353,12 @@
       "model_key": "market_NYISO",
       "scope": "market",
       "status": "approved",
-      "model_dir": "artifacts\\specialists\\market_NYISO",
+      "model_dir": "artifacts/specialists/market_NYISO",
       "match": {
         "market": "NYISO"
       },
       "artifact_validation": {
-        "model_dir": "artifacts\\specialists\\market_NYISO",
+        "model_dir": "artifacts/specialists/market_NYISO",
         "required_files": [
           "model.joblib",
           "model_p10.joblib",
@@ -372,7 +372,7 @@
         "missing_files": [],
         "is_valid": true
       },
-      "comparison_report": "reports\\specialists\\market_NYISO\\specialist_vs_global_comparison.json",
+      "comparison_report": "reports/specialists/market_NYISO/specialist_vs_global_comparison.json",
       "selection_scope": {
         "market": "NYISO",
         "series_id": null,

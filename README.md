@@ -53,6 +53,32 @@ GridGuard AI addresses this by forecasting short-term electricity load and showi
 
 ```mermaid
 flowchart TD
+    A["Raw GloElecLoad data"] --> B["Preprocessing pipeline"]
+    B --> C["Feature dataset"]
+
+    C --> D["Global champion model"]
+    C --> E["AEMO specialist model"]
+    C --> F["NYISO specialist model"]
+
+    D --> G["Model artifacts"]
+    E --> G
+    F --> G
+
+    G --> H["Model registry"]
+    H --> I["Registry-driven router"]
+
+    I --> J["FastAPI prediction API"]
+    J --> K["Prediction response"]
+    J --> L["MongoDB Atlas logs"]
+    J --> M["Prometheus metrics"]
+
+    K --> N["Streamlit dashboard"]
+    L --> N
+    M --> N
+```
+
+```mermaid
+flowchart TD
     A[Raw GloElecLoad data] --> B[Preprocessing]
     B --> C[Feature dataset]
 

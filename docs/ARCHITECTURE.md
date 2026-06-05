@@ -23,6 +23,36 @@ It includes:
 
 ```mermaid
 flowchart TD
+    A["Raw GloElecLoad data"] --> B["Preprocessing pipeline"]
+    B --> C["Feature dataset"]
+
+    C --> D["Global champion training"]
+    C --> E["AEMO specialist training"]
+    C --> F["NYISO specialist training"]
+
+    D --> G["Global model artifacts"]
+    E --> H["AEMO specialist artifacts"]
+    F --> I["NYISO specialist artifacts"]
+
+    G --> J["Model registry builder"]
+    H --> J
+    I --> J
+
+    J --> K["artifacts/model_registry.json"]
+    K --> L["Registry-driven model router"]
+
+    L --> M["FastAPI predict endpoint"]
+    M --> N["Prediction response"]
+    M --> O["MongoDB Atlas logs"]
+    M --> P["Prometheus metrics"]
+
+    N --> Q["Streamlit dashboard"]
+    O --> Q
+    P --> Q
+```
+
+```mermaid
+flowchart TD
     A[Raw GloElecLoad data] --> B[Preprocessing pipeline]
     B --> C[Feature dataset]
 

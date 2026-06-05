@@ -40,7 +40,10 @@ class ModelRouter:
 
     @staticmethod
     def _resolve_path(path: str | Path) -> Path:
-        value = Path(path)
+        # Registry paths must be portable across Windows, Linux CI, Docker, and Hugging Face.
+        # Normalize any old Windows-style backslashes before creating a Path object.
+        normalized = str(path).replace("\\", "/")
+        value = Path(normalized)
 
         if value.is_absolute():
             return value
